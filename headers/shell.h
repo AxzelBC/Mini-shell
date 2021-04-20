@@ -18,7 +18,7 @@
  * 
  * @param cadCommand arreglo de caracteres (comando).
  */
-void command(char** cadCommand);
+void leerCommand(char** cadCommand);
 
 /**
  * @brief ejecución de un comando básico.

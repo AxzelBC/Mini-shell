@@ -15,7 +15,7 @@
 
 #define TAM_MAXIMO 128
 
-int main(){
+int main(void){
     
     while (1)
     {
