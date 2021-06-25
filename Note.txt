@@ -1,0 +1,5 @@
+ASPECTOS FALTANTES:
+  1. Sacar los resultados a un archivo por medio del ">".
+  2. Implementar el pipe "|" (tubería) para actuar según los resultados de la salida anterior.
+  3. Implementación del "$USER" y el nombre de la maquina "@HOSTNAME". Esto para el "user@hostname~$".
+  4. Color de la shell según el "$USER".

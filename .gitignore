@@ -51,7 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-
 #Proyect config
 .vscode/
 examples/Vídeos/Fibo
