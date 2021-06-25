@@ -52,4 +52,7 @@ Mkfile.old
 dkms.conf
 
 
-.vscode
+#Proyect config
+.vscode/
+examples/Vídeos/Fibo
+src/main

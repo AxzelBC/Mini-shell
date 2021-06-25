@@ -39,8 +39,7 @@ int main(void){
         /**
          * @brief Creación de subproceso para los comandos
          */
-        pid_t pid;
-        pid = fork();
+        pid_t pid = fork();
         if (!pid) // New process (child)
         {
             /* code */
