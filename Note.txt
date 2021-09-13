@@ -1,5 +1,8 @@
 ASPECTOS FALTANTES:
-  1. Sacar los resultados a un archivo por medio del ">".
-  2. Implementar el pipe "|" (tubería) para actuar según los resultados de la salida anterior.
-  3. Implementación del "$USER" y el nombre de la maquina "@HOSTNAME". Esto para el "user@hostname~$".
-  4. Color de la shell según el "$USER".
+(F)  1. Usar la función readCommand debe 
+      
+
+(F)  2. Sacar los resultados a un archivo por medio del ">".
+(F)  3. Implementar el pipe "|" (tubería) para actuar según los resultados de la salida anterior.
+(V)  4. Implementación del "$USER" y el nombre de la maquina "@HOSTNAME". Esto para el "user@hostname~$".
+(F)  5. Color de la shell según el "$USER".

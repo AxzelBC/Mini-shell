@@ -53,5 +53,6 @@ dkms.conf
 
 #Proyect config
 .vscode/
-examples/Vídeos/Fibo
+examples/
 src/main
+.gitignore

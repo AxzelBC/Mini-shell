@@ -12,6 +12,17 @@
  * @date 2021-04-19 
  */
 
+#ifndef __shell_h__
+#define __shell_h__
+
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <string.h>
+#include <limits.h>
+#include <assert.h>
 
 /**
  * @brief lee el comando ingresado y determina que tipo de comando es
@@ -19,7 +30,7 @@
  * 
  * @param {string} cadCommand arreglo de caracteres (comando).
  */
-void leerCommand(char** cadCommand);
+void readCommand(char *cadCommand[CHAR_MAX]);
 
 
 /**
@@ -28,7 +39,7 @@ void leerCommand(char** cadCommand);
  * @param {int} argc 
  * @param {string} argv 
  */
-void commandBasic(int argc, char** argv);
+void commandBasic(int argc, char* argv[]);
 
 
 /**
@@ -47,3 +58,5 @@ void commandPipe(int argc1, char** argv1);
  * @param {string} argv2 
  */
 void commandOutfile(int argc2, char** argv2);
+
+#endif // 
