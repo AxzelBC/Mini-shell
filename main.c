@@ -54,15 +54,52 @@ int main(void){
         /**
          * @brief Almacena le comando ingresado.
          */
+        char *palabra;
         char *comando[CHAR_MAX];
         printf(ANSI_COLOR_GREEN "[%s@%s " ANSI_COLOR_RESET ,login,hostname);
         printf("%s]$ ",directory);
-        scanf(" %127[^\n]",**comando);
+
+
+
+
+
+
+
+
+        // scanf(" %127[^\n]",comando);
+        // **comando = getchar();
+        palabra = getchar();
+
+        int control = 0;
+        int tam = sizeof(palabra);
+        for (int i = 0; i < tam; i++){
+            if(strcmp(" ",palabra)){
+                strcat(comando[control],palabra);
+            }
+            else{
+                control++;
+            }
+        }
+
+        /**
+         * @brief prueba de arreglo
+         */
+        int tom = sizeof(comando) / sizeof(char *);
+        for (int i = 0; i < tom; i++){
+            printf("%s\n", comando[i]);
+        }
+
+
+
+
+
+
+
 
         /**
          * @brief si el comando es 'exit' para la shell.
          */
-        if (!strcmp("exit",**comando)){
+        if (!strcmp("exit",comando)){
             printf("Se acabó.\n");
             break;
             exit(EXIT_SUCCESS);
@@ -77,6 +114,7 @@ int main(void){
         int id = getpid();
 
         if (!pid){ // New process (child)
+            int status;
             printf("Pasé. %d\n",id);
             readCommand(comando);
         }

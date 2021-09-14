@@ -1,8 +1,13 @@
 #include "headers/shell.h"
 
 void readCommand(char *cadCommand[CHAR_MAX]){
+    
     printf("Funciono\n");
-    printf("%s",cadCommand[0]);
+    // int tam = sizeof(cadCommand) / sizeof(char *);
+
+    // for (int i = 0; i < tam; i++){
+    //     printf("%s\n", cadCommand[i]);
+    // }
 }
 
 void commandBasic(int argc, char* argv[]){
