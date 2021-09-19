@@ -8,92 +8,26 @@
  */
 
 /*
- *  Archivos de cabeceras (librerias).
+ *  Archivos de cabeceras (includes).
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <linux/limits.h>
-#include <limits.h>
 #include <string.h>
-#include <assert.h>
-#include "src/headers/shell.h"
+#include "src/shell.h"
 
-//Constantes
-#define ANSI_COLOR_GREEN   "\x1b[32m"
-#define ANSI_COLOR_RESET   "\x1b[0m"
 
 int main(void){
-    
-    while (1){
-        
-        /**
-         * @brief Promt del shell.
-         */
-        char hostname[PATH_MAX+1];
-        char login[PATH_MAX+1];
-        char directory[PATH_MAX+1];
-        char flag[] = "/";
-
-        gethostname(hostname, sizeof(hostname));
-        getlogin_r(login, sizeof(login));
-        getcwd(directory, sizeof(directory));
-
-        char *dir = strtok(directory, flag);
-
-        if(dir != NULL){
-            while(dir != NULL){
-                // printf("Token: %s\n", dir);
-                strcpy(directory, dir);
-                dir = strtok(NULL, flag);
-            }
-        }
-
+    do{
         /**
          * @brief Almacena le comando ingresado.
-         */
-        char *palabra;
-        char *comando[CHAR_MAX];
-        printf(ANSI_COLOR_GREEN "[%s@%s " ANSI_COLOR_RESET ,login,hostname);
-        printf("%s]$ ",directory);
-
-
-
-
-
-
-
-
-        // scanf(" %127[^\n]",comando);
-        // **comando = getchar();
-        palabra = getchar();
-
-        int control = 0;
-        int tam = sizeof(palabra);
-        for (int i = 0; i < tam; i++){
-            if(strcmp(" ",palabra)){
-                strcat(comando[control],palabra);
-            }
-            else{
-                control++;
-            }
-        }
-
-        /**
-         * @brief prueba de arreglo
-         */
-        int tom = sizeof(comando) / sizeof(char *);
-        for (int i = 0; i < tom; i++){
-            printf("%s\n", comando[i]);
-        }
-
-
-
-
-
-
+         */ 
+        char palabra[] = "ls -lAh";
+        char comando[128];
+        promtShell();
+        scanf(" %127[^\n]",comando);
 
 
         /**
@@ -108,8 +42,7 @@ int main(void){
         /**
          * @brief Creación de subproceso para los comandos
          */
-        pid_t pid;
-        pid = fork();
+        pid_t pid = fork();
 
         int id = getpid();
 
@@ -126,5 +59,5 @@ int main(void){
             perror("Error en la creación de pid\n");
             exit(EXIT_FAILURE);
         }
-    }
+    } while (1);
 }
