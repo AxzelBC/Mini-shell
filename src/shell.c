@@ -1,11 +1,13 @@
 #include "shell.h"
 
 void promtShell(){
+    //Arreglos
     char hostname[PATH_MAX+1];
     char login[PATH_MAX+1];
     char directory[PATH_MAX+1];
     char flag[] = "/";
 
+    //Llenado de Arreglos
     gethostname(hostname, sizeof(hostname));
     getlogin_r(login, sizeof(login));
     getcwd(directory, sizeof(directory));
@@ -14,7 +16,6 @@ void promtShell(){
 
     if(dir != NULL){
         while(dir != NULL){
-            // printf("Token: %s\n", dir);
             strcpy(directory, dir);
             dir = strtok(NULL, flag);
         }
@@ -24,25 +25,43 @@ void promtShell(){
     printf("%s]$ ",directory);
 }
 
-void readCommand(char* comando){
+void partirComando(char* comando){
     
-    char * cadena[128];
+    //Cadena.
+    char* cadena[128];
+
+    //Delimitador & flags.
     const char delimitador[] = " ";
-    char *token = strtok(comando, delimitador);
+
+    //Contadores.
     int i = 0;
+
+    char *token = strtok(comando, delimitador);
 
     if(token != NULL){
         do{
-            // printf("Token2: %s\n", token);
             cadena[i] = token;
-            // printf("Cadena[%d]: %s\n",i,cadena[i]);
             i++;
             token = strtok(NULL, delimitador);
         }while(token != NULL);
         cadena[i+1] = "\0";
     }
 
-    commandBasic(i,cadena);
+    commandBasic(cadena,i);
+}
+
+void leerComando(char* comando){
+    const char* pipe_ = "|", salida_ = ">";
+
+    if () //Si hay pipe.
+    {
+        /* code */
+    } else if (/* condition */) //Si hay salida.
+    {
+        /* code */
+    }
+    
+    
 }
 
 void commandBasic(int argc, char* argv[]){

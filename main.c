@@ -34,7 +34,7 @@ int main(void){
          * @brief si el comando es 'exit' para la shell.
          */
         if (!strcmp("exit",comando)){
-            printf("Se acabó.\n");
+            printf("Hasta pronto. :D\n");
             break;
             exit(EXIT_SUCCESS);
         }
@@ -49,7 +49,7 @@ int main(void){
         if (!pid){ // New process (child)
             int status;
             printf("Pasé. %d\n",id);
-            readCommand(comando);
+            partirComando(comando);
         }
         else if (pid > 0){ // Parent process (dad)
             wait(NULL);

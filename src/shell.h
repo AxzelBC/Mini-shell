@@ -49,16 +49,24 @@ void promtShell();
  * @brief lee el comando ingresado y determina que tipo de comando es
  *        basandose en las tres caracteristicas definidas.
  * 
- * @param {string} comando arreglo de caracteres (comando).
+ * @param comando {char*} comando arreglo de caracteres (comando).
  */
-void readCommand(char* comando);
+void leerComando(char* comando);
+
+
+/**
+ * @brief 
+ * 
+ * @param comando {char*}
+ */
+void partirComando(char* comando);
 
 
 /**
  * @brief ejecución de un comando básico.
  * 
- * @param {int} argc 
- * @param {string} argv 
+ * @param argc {int}
+ * @param argv {char**}
  */
 void commandBasic(int argc, char* argv[]);
 
@@ -66,10 +74,10 @@ void commandBasic(int argc, char* argv[]);
 /**
  * @brief Ejecución de un comando con Pipe (|).
  * 
- * @param {int} argc1
- * @param {string} argv1 
+ * @param primerComando {char*}
+ * @param segundoComando {char*}
  */
-void commandPipe(int argc1, char** argv1);
+void commandPipe(char* primerComando, char* segundoComando);
 
 
 /**
@@ -78,6 +86,6 @@ void commandPipe(int argc1, char** argv1);
  * @param {int} argc2 
  * @param {string} argv2 
  */
-void commandOutfile(int argc2, char** argv2);
+void commandOutfile(char* comando, char* salida);
 
 #endif // 
