@@ -20,6 +20,7 @@
 
 
 int main(void){
+    int status;
     do{
         /**
          * @brief Almacena le comando ingresado.
@@ -47,7 +48,6 @@ int main(void){
         int id = getpid();
 
         if (!pid){ // New process (child)
-            int status;
             printf("Pasé. %d\n",id);
             readCommand(comando);
         }
