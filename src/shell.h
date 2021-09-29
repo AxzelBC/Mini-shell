@@ -16,7 +16,7 @@
 #define __shell_h__
 
 
-/**
+/*
  * Include
  */
 #include <string.h>
@@ -36,6 +36,9 @@
 */
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
+#define READ  0
+#define WRITE 1
+#define MAX_COMANDO 256
 
 
 /**
@@ -55,11 +58,19 @@ void leerComando(char* comando);
 
 
 /**
- * @brief 
+ * @brief parte un comando por espacios y los guarda en una arreglo de punteros (array string).
  * 
  * @param comando {char*}
  */
-void partirComando(char* comando);
+void pEComando(char* comando);
+
+
+/**
+ * @brief parte un comando por pipe y los guarda en una arreglo de punteros (array string).
+ * 
+ * @param comando {char*}
+ */
+void pPComando(char* comandoPipe);
 
 
 /**
@@ -77,7 +88,7 @@ void commandBasic(int argc, char* argv[]);
  * @param primerComando {char*}
  * @param segundoComando {char*}
  */
-void commandPipe(char* primerComando, char* segundoComando);
+void commandPipe(char* pComando, char* sComando);
 
 
 /**
