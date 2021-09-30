@@ -64,21 +64,36 @@ void pPComando(char* comandoPipe){
     strcpy(p1Cadena,token);
     token = strtok(NULL, delimitador);
     strcpy(p2Cadena,token);
-
+	
     commandPipe(p1Cadena,p2Cadena);
 }
 
+void pOComando(char* comandoOut) {
+	/* Cadena */
+    char p1Cadena[MAX_COMANDO];
+    char p2Cadena[MAX_COMANDO];
+
+    /* Delimitador */
+    const char delimitador[] = ">";
+
+    /* Insercion de comandos. */
+    char *token = strtok(comandoOut, delimitador);
+    strcpy(p1Cadena,token);
+    token = strtok(NULL, delimitador);
+    strcpy(p2Cadena,token);
+
+    commandOutFile(p1Cadena, p2Cadena);
+}
 
 void leerComando(char* comando){
     int _pipe = 124, _salida = 62;
 
     /* Si hay pipe. */
-    if (strchr(comando, _pipe)){
+    if (strchr(comando, _pipe)) {
         pPComando(comando);
-    // } else if (/* condition */){ //Si hay salida.
-        /* code */
-    /* Comando básico. */
-    } else {
+    } else if (strchr(comando, _salida)) { //Si hay salida.
+        pOComando(comando);
+	} else {  /* Comando basico. */
         pEComando(comando);
     }    
 }
@@ -137,6 +152,29 @@ void commandPipe(char* pComando, char* sComando){
     }
 }
 
-void commandOutfile(char* comando, char* salida){
-    
+void commandOutFile(char* comando, char* salida){
+
+    char cadena[MAXSTR];
+	int s;
+	int file; /* descriptor del archivo que se va a usar. */
+	
+	bzero(cadena, sizeof(char)*MAXSTR);
+	remove_spaces(salida);
+	file = open(salida, O_CREAT | O_WRONLY | O_APPEND, S_IRUSR | S_IWUSR);
+	
+	assert(file != -1);
+
+	dup2(file, STDOUT_FILENO);
+	pEComando(comando);
+	close(file);
+}
+
+
+void remove_spaces(char* str) {
+    char *write = str, *read = str;
+	
+	do {
+	   if (*read != ' ')
+    	   *write++ = *read;
+	} while (*read++);
 }
