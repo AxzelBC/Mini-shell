@@ -39,6 +39,7 @@
 #define READ  0
 #define WRITE 1
 #define MAX_COMANDO 256
+#define MAXSTR 256
 
 
 /**
@@ -73,6 +74,14 @@ void pEComando(char* comando);
 void pPComando(char* comandoPipe);
 
 
+/** 
+ * @brief parte un comando por ">" y los guarda en un arreglo de punteros (array string).
+ *
+ * @param comandoOut {char*}
+ */
+void pOComando(char* comandoOut);
+
+
 /**
  * @brief ejecución de un comando básico.
  * 
@@ -97,6 +106,13 @@ void commandPipe(char* pComando, char* sComando);
  * @param {int} argc2 
  * @param {string} argv2 
  */
-void commandOutfile(char* comando, char* salida);
+void commandOutFile(char* comando, char* salida);
+
+/**
+ * @brief Elimina los espacios en blanco de una cadena de texto.
+ *
+ * @param str {char*}
+ */
+void remove_spaces(char* str);
 
 #endif // 
