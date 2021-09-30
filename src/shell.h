@@ -16,7 +16,7 @@
 #define __shell_h__
 
 
-/**
+/*
  * Include
  */
 #include <string.h>
@@ -36,6 +36,9 @@
 */
 #define ANSI_COLOR_GREEN   "\x1b[32m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
+#define READ  0
+#define WRITE 1
+#define MAX_COMANDO 256
 
 
 /**
@@ -49,16 +52,32 @@ void promtShell();
  * @brief lee el comando ingresado y determina que tipo de comando es
  *        basandose en las tres caracteristicas definidas.
  * 
- * @param {string} comando arreglo de caracteres (comando).
+ * @param comando {char*} comando arreglo de caracteres (comando).
  */
-void readCommand(char* comando);
+void leerComando(char* comando);
+
+
+/**
+ * @brief parte un comando por espacios y los guarda en una arreglo de punteros (array string).
+ * 
+ * @param comando {char*}
+ */
+void pEComando(char* comando);
+
+
+/**
+ * @brief parte un comando por pipe y los guarda en una arreglo de punteros (array string).
+ * 
+ * @param comando {char*}
+ */
+void pPComando(char* comandoPipe);
 
 
 /**
  * @brief ejecución de un comando básico.
  * 
- * @param {int} argc 
- * @param {string} argv 
+ * @param argc {int}
+ * @param argv {char**}
  */
 void commandBasic(int argc, char* argv[]);
 
@@ -66,10 +85,10 @@ void commandBasic(int argc, char* argv[]);
 /**
  * @brief Ejecución de un comando con Pipe (|).
  * 
- * @param {int} argc1
- * @param {string} argv1 
+ * @param primerComando {char*}
+ * @param segundoComando {char*}
  */
-void commandPipe(int argc1, char** argv1);
+void commandPipe(char* pComando, char* sComando);
 
 
 /**
@@ -78,6 +97,6 @@ void commandPipe(int argc1, char** argv1);
  * @param {int} argc2 
  * @param {string} argv2 
  */
-void commandOutfile(int argc2, char** argv2);
+void commandOutfile(char* comando, char* salida);
 
 #endif // 

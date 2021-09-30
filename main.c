@@ -19,25 +19,28 @@
 #include "src/shell.h"
 
 
+
 int main(void){
+    /* Variable de status para el hijo. */
     int status;
     do{
         /**
          * @brief Almacena le comando ingresado.
          */ 
-        char comando[128];
+        char comando[MAX_COMANDO];
         promtShell();
-        scanf(" %127[^\n]",comando);
+        scanf(" %255[^\n]",comando);
 
 
         /**
          * @brief si el comando es 'exit' para la shell.
          */
         if (!strcmp("exit",comando)){
-            printf("Se acabó.\n");
+            printf("Hasta pronto. :D\n");
             break;
             exit(EXIT_SUCCESS);
         }
+
 
         /**
          * @brief Creación de subproceso para los comandos, y verificación del PID.
@@ -45,25 +48,30 @@ int main(void){
         pid_t pid = fork();
         assert(pid >= 0);
 
-        int id = getpid();
-
-        if (!pid){ // New process (child)
-            printf("Pasé. %d\n",id);
-            readCommand(comando);
+        /* Creación del proceso hijo. */
+        if (!pid){
+            leerComando(comando);
         }
-        else if (pid > 0){ // Parent process (dad)
+        /* Verificación de estado del proceso padre .*/
+        else if (pid > 0){
             wait(&status);
-            if (WIFEXITED(status)){ /* Se verifica que el estado es de salida. */
-                if (!(WEXITSTATUS(status)))
-                    printf("\n:)\n");
-                else
+            /* Se verifica que el estado es de salida. */
+            if (WIFEXITED(status)){
+                if (!(WEXITSTATUS(status))){
+                    /* Revisión del clear (estético) */
+                    if(!strcmp("clear",comando)){
+                        printf("");
+                    } else{
+                        printf("\n:)\n");
+                    }
+                } else{
                     printf("\n:(\n");
-            }
-            else{
+                }
+            } else{
                 return 1;
             }
-        }
-        else{ // Error in PID
+        /* Error en PID */
+        } else{
             perror("Error en la creación de pid\n");
             exit(EXIT_FAILURE);
         }
