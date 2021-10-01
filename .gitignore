@@ -54,5 +54,5 @@ dkms.conf
 #Proyect config
 .vscode/
 examples/
-src/main
+Note.txt
 .gitignore
