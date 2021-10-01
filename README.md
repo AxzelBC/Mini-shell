@@ -2,13 +2,17 @@
 Mini proyecto de  la asignatura Sistemas Operativos (SO). La shell debe reconocer expresiones como `$ ls -lAh | wc` y `$ ls -lAh > salida.txt`.
 
 ## Dependencias
-Para instalar la **Vagón-sh** hay que cumplir las siguientes dependencias (cabe aclarar que en root): `make, clang y git`.
+Para instalar la **Vagon-sh** hay que cumplir las siguientes dependencias (cabe aclarar que en root): `make`, `clang` y `git`.
 
 ### Arch (y derivadas)
-`# pacman -Sy make clang git`
+~~~sh
+# pacman -Sy make clang git
+~~~
 
 ### Ubuntu (y derivadas)
-`# apt install make clang-12 git`
+~~~sh
+# apt install make clang-12 git
+~~~
 
 ## Instalación y ejecución
 ~~~sh
