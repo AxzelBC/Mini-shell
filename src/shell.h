@@ -2,6 +2,8 @@
  * @file shell.h
  * @author Alejandro C. Mosquera (AxzelBC)
  * @code 2022499
+ * @author Daniel F. Vélez C. 
+ * @code 1924306
  * @brief Declaración de funciones de la shell.
  * @details La lógica de un ingreso de comando basado en las reglas | y >
  *          se puede asumir que existen 3 tipos de comandos:
@@ -9,7 +11,7 @@
  *          Basado en resultado (Pipe): ls -l | grep *.c
  *          Enviar resultado a un archivo: ls -l | grep *.c > archivo.txt
  * @version 0.1
- * @date 2021-04-19 
+ * @date 2021-10-01
  */
 
 #ifndef __shell_h__
@@ -103,8 +105,8 @@ void commandPipe(char* pComando, char* sComando);
 /**
  * @brief Ejecución de un comando con salida a un archivo (>).
  * 
- * @param {int} argc2 
- * @param {string} argv2 
+ * @param {char *}
+ * @param {char *}
  */
 void commandOutFile(char* comando, char* salida);
 

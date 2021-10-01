@@ -1,3 +1,19 @@
+/**
+ * @file shell.c
+ * @author Alejandro C. Mosquera (AxzelBC)
+ * @code 2022499
+ * @author Daniel F. Vélez C. 
+ * @code 1924306
+ * @brief Implementaciín de las funciones de shell.h.
+ * @details La lógica de un ingreso de comando basado en las reglas | y >
+ *          se puede asumir que existen 3 tipos de comandos:
+ *          Básico: ls -l
+ *          Basado en resultado (Pipe): ls -l | grep *.c
+ *          Enviar resultado a un archivo: ls -l | grep *.c > archivo.txt
+ * @version 0.1
+ * @date 2021-10-01
+ */
+
 #include "shell.h"
 
 void promtShell(){
@@ -109,14 +125,6 @@ void commandBasic(int argc, char* argv[]){
 }
 
 
-/**
- * Recibir la cadena de punteros solamente.
- * usar el código de "2.pipes.c" para general el pipe usando el arreglo de pipe(fd).
- * usar el switch para despejar los casos.
- * en vez de usar el "execlp" se usará el "leerComando",
- * para cuando detecte otra caracteristica cómo | o > la tome en cuenta,
- * hasta llegar a un comando simple.
- */
 void commandPipe(char* pComando, char* sComando){
     pid_t pid;
     int fd[2];
@@ -129,8 +137,8 @@ void commandPipe(char* pComando, char* sComando){
     switch(pid = fork()) {
 
         case 0:
-	        // The child process will execute wc.
-	        // Close the pipe write descriptor.
+	        // El proceso hijo se ejecuta con sComando.
+	        // Cierra la escritura del descriptor del pipe.
 	        close(fd[WRITE]);
 	        // Redirect STDIN to read from the pipe.
 	        dup2(fd[READ], STDIN_FILENO);
@@ -142,10 +150,10 @@ void commandPipe(char* pComando, char* sComando){
     	    exit(EXIT_FAILURE);
 
         default:
-	        // The parent process will execute ls.
-	        // Close the pipe read descriptor.
+	        // El proceso padre se manda a pComando.
+	        // Se cierra el pipe que lee el descriptor.
 	        close(fd[READ]);
-	        // Redirect STDOUT to write to the pipe.
+	        // Redirecciona STDOUT a la escritura del pipe.
 	        dup2(fd[WRITE], STDOUT_FILENO);
 	        // Ejecuta primer comando.
 	        leerComando(pComando);
