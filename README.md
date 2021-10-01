@@ -1,17 +1,17 @@
 # Mini-shell **Vagón-sh**
-Mini proyecto de  la asignatura Sistemas Operativos (SO). La shell debe reconocer expresiones como `$ ls -lAh | wc` y `$ ls -lAh > salida.txt`.
+Mini proyecto de  la asignatura Sistemas Operativos (SO). La shell debe reconocer expresiones como `ls -lAh | wc` y `ls -lAh > salida.txt`.
 
 ## Dependencias
 Para instalar la **Vagon-sh** hay que cumplir las siguientes dependencias (cabe aclarar que en root): `make`, `clang` y `git`.
 
 ### Arch Linux (y derivadas)
 ~~~sh
-# pacman -Sy make clang git
+$ sudo pacman -Sy make clang git
 ~~~
 
 ### Ubuntu (y derivadas)
 ~~~sh
-# apt install make clang-12 git
+$ sudo apt install make clang-12 git
 ~~~
 
 ## Instalación y ejecución
