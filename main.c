@@ -2,6 +2,8 @@
  * @file main.c
  * @author Alejandro C. Mosquera (AxzelBC)
  * @code 2022499
+ * @author Daniel F. Vélez C. 
+ * @code 1924306
  * @brief Archivo principal de la shell.
  * @version 0.1
  * @date 2021-04-19
