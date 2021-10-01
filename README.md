@@ -4,7 +4,7 @@ Mini proyecto de  la asignatura Sistemas Operativos (SO). La shell debe reconoce
 ## Dependencias
 Para instalar la **Vagon-sh** hay que cumplir las siguientes dependencias (cabe aclarar que en root): `make`, `clang` y `git`.
 
-### Arch (y derivadas)
+### Arch Linux (y derivadas)
 ~~~sh
 # pacman -Sy make clang git
 ~~~
