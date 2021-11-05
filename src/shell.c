@@ -2,8 +2,6 @@
  * @file shell.c
  * @author Alejandro C. Mosquera (AxzelBC)
  * @code 2022499
- * @author Daniel F. Vélez C. 
- * @code 1924306
  * @brief Implementaciín de las funciones de shell.h.
  * @details La lógica de un ingreso de comando basado en las reglas | y >
  *          se puede asumir que existen 3 tipos de comandos:
